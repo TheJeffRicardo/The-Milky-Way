@@ -45,7 +45,7 @@ class User {
                             })
                         }else {
                             res.status(401).json({
-                                err: 'You entered an invalid password or did not register. '
+                                err: 'Invalid password or did not register. '
                             })
                         }
                     })
@@ -86,7 +86,7 @@ class User {
         let detail = req.body;
         // Hashing user password
         detail.userPass = await 
-        hash(detail.userPass, 15);
+        hash(detail.userPass, 12);
         // This information will be used for authentication.
         let user = {
             emailAdd: detail.emailAdd,
@@ -108,7 +108,7 @@ class User {
                     maxAge: 3600000,
                     httpOnly: true
                 });
-                res.status(200).json({msg: "A user record was saved."})
+                res.status(200).json({message: "A user record was saved."})
             }
         })    
     }
@@ -116,7 +116,7 @@ class User {
         let data = req.body;
         if(data.userPass !== null || 
             data.userPass !== undefined)
-            data.userPass = hashSync(data.userPass, 15);
+            data.userPass = hashSync(data.userPass, 12);
         const strQry = 
         `
         UPDATE Users
@@ -127,7 +127,7 @@ class User {
         db.query(strQry,[data, req.params.id], 
             (err)=>{
             if(err) throw err;
-            res.status(200).json( {msg: 
+            res.status(200).json( {message: 
                 "A row was affected"} );
         })    
     }
@@ -141,7 +141,7 @@ class User {
         db.query(strQry,[req.params.id], 
             (err)=>{
             if(err) throw err;
-            res.status(200).json( {msg: 
+            res.status(200).json( {message: 
                 "A record was removed from a database"} );
         })    
     }
@@ -149,8 +149,7 @@ class User {
 // Product
 class Product {
     fetchProducts(req, res) {
-        const strQry = `SELECT id, prodName, prodDescription, 
-        levels, prodPrice, prodQuantity, imgURL
+        const strQry = `SELECT prodID, prodName, Price, size, imgURL
         FROM products;`;
         db.query(strQry, (err, results)=> {
             if(err) throw err;
@@ -158,8 +157,7 @@ class Product {
         });
     }
     fetchProduct(req, res) {
-        const strQry = `SELECT id, prodName, prodDescription, 
-        levels, prodPrice, prodQuantity, imgURL
+        const strQry = `SELECT proID, prodName, price, size, imgURL
         FROM products
         WHERE id = ?;`;
         db.query(strQry, [req.params.id], (err, results)=> {
@@ -179,7 +177,7 @@ class Product {
                 if(err){
                     res.status(400).json({err: "Unable to insert a new record."});
                 }else {
-                    res.status(200).json({msg: "Product saved"});
+                    res.status(200).json({message: "Product saved"});
                 }
             }
         );    
@@ -197,7 +195,7 @@ class Product {
                 if(err){
                     res.status(400).json({err: "Unable to update a record."});
                 }else {
-                    res.status(200).json({msg: "Product updated"});
+                    res.status(200).json({message: "Product updated"});
                 }
             }
         );    
@@ -211,7 +209,7 @@ class Product {
         `;
         db.query(strQry,[req.params.id], (err)=> {
             if(err) res.status(400).json({err: "The record was not found."});
-            res.status(200).json({msg: "A product was deleted."});
+            res.status(200).json({message: "A product was deleted."});
         })
     }
 

@@ -1,10 +1,10 @@
-// app.use((req, res, next) => {
+// function userError((req, res, next) => {
 //     res.status(404).json({
 //       message: 'Not Found'
 //     });
 //   });
 
-//   app.use((err, req, res, next) => {
+//   function serverError((err, req, res, next) => {
 //     res.status(500).json({
 //       message: 'Internal Server Error'
 //     });
