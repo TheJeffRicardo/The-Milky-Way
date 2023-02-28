@@ -1,16 +1,4 @@
-// function userError((req, res, next) => {
-//     res.status(404).json({
-//       message: 'Not Found'
-//     });
-//   });
-
-//   function serverError((err, req, res, next) => {
-//     res.status(500).json({
-//       message: 'Internal Server Error'
-//     });
-//   });
-
-// Error Handling
+//Error handling
 function errorHandling(err, req, res, next) {
     if(err) {
         const status = err.status || 500;

@@ -169,7 +169,7 @@ class Product {
     addProduct(req, res) {
         const strQry = 
         `
-        INSERT INTO Products
+        INSERT INTO products
         SET ?;
         `;
         db.query(strQry,[req.body],
