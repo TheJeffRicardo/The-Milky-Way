@@ -53,13 +53,13 @@ bodyParser.json(),
     product.addProduct(req, res);
 })
 // Update a product
-route.put('/product/:prodID', 
+route.put('/products/:prodID', 
 bodyParser.json(),
 (req, res)=> {
     product.updateProduct(req, res);
 })
 // Delete a product
-route.delete('/product/:prodID', 
+route.delete('/products/:prodID', 
 (req, res)=> {
     product.deleteProduct(req, res);
 })
