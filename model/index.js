@@ -149,7 +149,7 @@ class User {
 // Product
 class Product {
     fetchProducts(req, res) {
-        const strQry = `SELECT prodID, prodName, price, size, imgURL
+        const strQry = `SELECT prodID, prodName, categories, price, size, imgURL
         FROM products;`;
         db.query(strQry, (err, results)=> {
             if(err) throw err;
@@ -157,7 +157,7 @@ class Product {
         });
     }
     fetchProduct(req, res) {
-        const strQry = `SELECT prodID, prodName, price, size, imgURL
+        const strQry = `SELECT prodID, prodName, categories, price, size, imgURL
         FROM products
         WHERE prodID = ?;`;
         db.query(strQry, [req.params.id], (err, results)=> {
