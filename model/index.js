@@ -149,7 +149,7 @@ class User {
 // Product
 class Product {
     fetchProducts(req, res) {
-        const strQry = `SELECT prodID, prodName, Price, size, imgURL
+        const strQry = `SELECT prodID, prodName, price, size, imgURL
         FROM products;`;
         db.query(strQry, (err, results)=> {
             if(err) throw err;
@@ -157,9 +157,9 @@ class Product {
         });
     }
     fetchProduct(req, res) {
-        const strQry = `SELECT proID, prodName, price, size, imgURL
+        const strQry = `SELECT prodID, prodName, price, size, imgURL
         FROM products
-        WHERE id = ?;`;
+        WHERE prodID = ?;`;
         db.query(strQry, [req.params.id], (err, results)=> {
             if(err) throw err;
             res.status(200).json({results: results})
@@ -186,9 +186,9 @@ class Product {
     updateProduct(req, res) {
         const strQry = 
         `
-        UPDATE Products
+        UPDATE products
         SET ?
-        WHERE id = ?
+        WHERE prodID = ?
         `;
         db.query(strQry,[req.body, req.params.id],
             (err)=> {
@@ -204,8 +204,8 @@ class Product {
     deleteProduct(req, res) {
         const strQry = 
         `
-        DELETE FROM Products
-        WHERE id = ?;
+        DELETE FROM products
+        WHERE prodID = ?;
         `;
         db.query(strQry,[req.params.id], (err)=> {
             if(err) res.status(400).json({err: "The record was not found."});
