@@ -24,6 +24,10 @@ route.post('/login', bodyParser.json(), (req, res)=>{
 route.get('/users', (req, res)=>{
     user.fetchUsers(req, res);
 });
+// Retrieve single users
+route.get('/user/:id', (req, res)=>{
+    user.fetchUsers(req, res);
+});
 // Update
 route.put('/user/:id',bodyParser.json(), (req, res)=>{
     user.updateUser(req, res);
@@ -42,24 +46,22 @@ route.get('/products', (req, res)=> {
     product.fetchProducts(req, res);
 })
 // Fetch a single product
-route.get('/product/:prodID', 
+route.get('/product/:id', 
 (req, res)=> {
     product.fetchProduct(req, res);
 })
 // Add a new product
-route.post('/product', 
-bodyParser.json(), 
+route.post('/product', bodyParser.json(), 
 (req, res)=> {
     product.addProduct(req, res);
 })
 // Update a product
-route.put('/product/:prodID', 
-bodyParser.json(),
+route.put('/product/:id', bodyParser.json(),
 (req, res)=> {
     product.updateProduct(req, res);
 })
 // Delete a product
-route.delete('/product/:prodID', 
+route.delete('/product/:id', 
 (req, res)=> {
     product.deleteProduct(req, res);
 })
