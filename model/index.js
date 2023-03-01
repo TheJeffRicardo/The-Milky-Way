@@ -10,7 +10,7 @@ class User {
         const {emailAdd, userPass} = req.body;
         const strQry = 
         `
-        SELECT firstName, lastName, gender, emailAdd, userPass, userRole, userProfile
+        SELECT firstName, lastName, gender, cellphoneNumber, emailAdd, userPass, userRole, userProfile
         FROM Users
         WHERE emailAdd = '${emailAdd}';
         `;
