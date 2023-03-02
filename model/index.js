@@ -108,7 +108,7 @@ class User {
                     maxAge: 3600000,
                     httpOnly: true
                 });
-                res.status(200).json({message: "A user record was saved."})
+                res.status(200).json({message: "A user was captured."})
             }
         })    
     }
@@ -142,7 +142,7 @@ class User {
             (err)=>{
             if(err) throw err;
             res.status(200).json( {message: 
-                "A record was removed from a database"} );
+                "A user was removed from a database"} );
         })    
     }
 }
@@ -176,7 +176,7 @@ class Product {
                 if(err){
                     res.status(400).json({err: "Unable to insert a new record."});
                 }else {
-                    res.status(200).json({message: "Product saved"});
+                    res.status(200).json({message: "Item has been captured"});
                 }
             }
         );    
@@ -192,9 +192,9 @@ class Product {
         db.query(strQry,[req.body, req.params.id],
             (err)=> {
                 if(err){
-                    res.status(400).json({err: "Unable to update a record."});
+                    res.status(400).json({err: "Unable to update a item."});
                 }else {
-                    res.status(200).json({message: "Product updated"});
+                    res.status(200).json({message: "Item is  updated"});
                 }
             }
         );    
@@ -207,8 +207,8 @@ class Product {
         WHERE prodID = ?;
         `;
         db.query(strQry,[req.params.id], (err)=> {
-            if(err) res.status(400).json({err: "The record was not found."});
-            res.status(200).json({message: "A product was deleted."});
+            if(err) res.status(400).json({err: "The data was not found."});
+            res.status(200).json({message: "An item was deleted."});
         })
     }
 

@@ -1,6 +1,6 @@
 // Importing Authentication Middleware
 require('dotenv').config();
-const {sign, verify} = require('jsonwebtoken');
+var {sign, verify} = require('jsonwebtoken');
 // Creating a token
 function createToken(user) {
     return sign({
@@ -15,7 +15,7 @@ function createToken(user) {
 //
 function verifyAToken(req, res, next) {
     try{
-        const token = req.cookies["LegitUser"] !== null ? req.cookies["LegitUser"] :
+        let token = req.cookies["LegitUser"] !== null ? req.cookies["LegitUser"] :
         "Please register" ;
         const isValid = null;
         if(token !== "Please register") {

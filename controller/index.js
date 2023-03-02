@@ -46,22 +46,24 @@ route.get('/products', (req, res)=> {
     product.fetchProducts(req, res);
 })
 // Fetch a single product
-route.get('/product/:id', 
+route.get('/product/:prodID', 
 (req, res)=> {
     product.fetchProduct(req, res);
 })
 // Add a new product
-route.post('/product', bodyParser.json(), 
+route.post('/product', 
+bodyParser.json(), 
 (req, res)=> {
     product.addProduct(req, res);
 })
 // Update a product
-route.put('/product/:id', bodyParser.json(),
+route.put('/product/:prodID', 
+bodyParser.json(),
 (req, res)=> {
     product.updateProduct(req, res);
 })
 // Delete a product
-route.delete('/product/:id', 
+route.delete('/product/:prodID', 
 (req, res)=> {
     product.deleteProduct(req, res);
 })
