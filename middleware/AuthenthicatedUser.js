@@ -9,14 +9,14 @@ function createToken(user) {
     },
     process.env.SECRET_KEY,
     {
-        expiresIn: '10 min'
+        expiresIn: '1 hour'
     });
 }
 //
 function verifyAToken(req, res, next) {
     try{
-        let token = req.cookies["LegitUser"] !== null ? req.cookies["LegitUser"] :
-        "Please register" ;
+        var token = req.cookies["LegitUser"] !== null ? req.cookies["LegitUser"] :
+        "Please sign up" ;
         const isValid = null;
         if(token !== "Please register") {
             isValid = verify(token, process.env.SECRET_KEY);
@@ -24,10 +24,10 @@ function verifyAToken(req, res, next) {
                 req.authenticated = true;
                 next();
             }else {
-                res.status(400).json({err: "Please register"})
+                res.status(400).json({err: "Please sign up"})
             }
         }else {
-            res.status(400).json({err: "Please register"})
+            res.status(400).json({err: "Please sign up"})
         }
     }catch(e) {
         res.status(400).json({err: e.message});
