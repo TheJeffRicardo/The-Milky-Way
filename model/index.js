@@ -1,7 +1,7 @@
 // Database configurations
 const db = require('../config');
 //bcrypt module
-const { hash, compare, hashsync } = require('bcrypt');
+const { hash, compare, hashSync } = require('bcrypt');
 //middleware for creating tokens
 const { createToken} = require('../middleware/AuthenthicatedUser')
 // User 
@@ -167,21 +167,18 @@ class Product {
 
     }
     addProduct(req, res) {
-        const strQry = 
-        `
+        const strQry = `
         INSERT INTO products
         SET ?;`;
-        db.query(strQry,[req.body],
-            (err)=> {
-                if(err){
-                    res.status(400).json({err: "Unable to insert a new item."});
-                }else {
-                    res.status(200).json({message: "Item has been captured"});
-                }
+        db.query(strQry,[req.body], (err)=> {
+            if(err){
+                res.status(400).json({err})
+            } else {
+                res.status(200).json({message: "A product was added."})
             }
-        );    
-
+        })
     }
+    
     updateProduct(req, res) {
         const strQry = 
         `

@@ -26,7 +26,7 @@ route.get('/users', (req, res)=>{
 });
 // Retrieve single users
 route.get('/user/:id', (req, res)=>{
-    user.fetchUsers(req, res);
+    user.fetchUser(req, res);
 });
 // Update
 route.put('/user/:id',bodyParser.json(), (req, res)=>{
