@@ -1,5 +1,5 @@
 // Database configurations
-const db = require('../config');
+const dataBase = require('../config');
 //bcrypt module
 const { hash, compare, hashsync } = require('bcrypt');
 //middleware for creating tokens
@@ -14,7 +14,7 @@ class User {
         FROM Users
         WHERE emailAdd = '${emailAdd}';
         `;
-        db.query(strQry, async (err, data)=>{
+        dataBase.query(strQry, async (err, data)=>{
             if(err) throw err;
             if((!data.length) || (data == null)) {
                 res.status(401).json({err: 
@@ -58,8 +58,8 @@ class User {
         SELECT userID, firstName, lastName, gender, cellphoneNumber, emailAdd, userRole, userProfile, joinDate
         FROM Users;
         `;
-        //db
-        db.query(strQry, (err, data)=>{
+        //database
+        dataBase.query(strQry, (err, data)=>{
             if(err) throw err;
             else res.status(200).json( 
                 {results: data} );
@@ -70,10 +70,10 @@ class User {
         `
         SELECT userID, firstName, lastName, gender, cellphoneNumber, emailAdd, userRole, userProfile, joinDate
         FROM Users
-        WHERE userID = ?;
+        WHERE id = ?;
         `;
-        //db
-        db.query(strQry,[req.params.id], 
+        //database
+        dataBase.query(strQry,[req.params.id], 
             (err, data)=>{
             if(err) throw err;
             else res.status(200).json( 
@@ -96,7 +96,7 @@ class User {
         const strQry =
         `INSERT INTO Users
         SET ?;`;
-        db.query(strQry, [detail], (err)=> {
+        database.query(strQry, [detail], (err)=> {
             if(err) {
                 res.status(401).json({err});
             }else {
@@ -121,10 +121,10 @@ class User {
         `
         UPDATE Users
         SET ?
-        WHERE userID = ?;
+        WHERE id = ?;
         `;
-        //db
-        db.query(strQry,[data, req.params.id], 
+        //database
+        database.query(strQry,[data, req.params.id], 
             (err)=>{
             if(err) throw err;
             res.status(200).json( {message: 
@@ -137,8 +137,8 @@ class User {
         DELETE FROM Users
         WHERE userID = ?;
         `;
-        //db
-        db.query(strQry,[req.params.id], 
+        //database
+        database.query(strQry,[req.params.id], 
             (err)=>{
             if(err) throw err;
             res.status(200).json( {message: 
@@ -151,7 +151,7 @@ class Product {
     fetchProducts(req, res) {
         const strQry = `SELECT prodID, prodName, categories, price, size, imgURL, userId
         FROM products;`;
-        db.query(strQry, (err, results)=> {
+        database.query(strQry, (err, results)=> {
             if(err) throw err;
             res.status(200).json({results: results})
         });
@@ -159,8 +159,8 @@ class Product {
     fetchProduct(req, res) {
         const strQry = `SELECT prodID, prodName, categories, price, size, imgURL, userID
         FROM products
-        WHERE prodID = ?;`;
-        db.query(strQry, [req.params.id], (err, results)=> {
+        WHERE id = ?;`;
+        database.query(strQry, [req.params.id], (err, results)=> {
             if(err) throw err;
             res.status(200).json({results: results})
         });
@@ -171,7 +171,7 @@ class Product {
         `
         INSERT INTO products
         SET ?;`;
-        db.query(strQry,[req.body],
+        database.query(strQry,[req.body],
             (err)=> {
                 if(err){
                     res.status(400).json({err: "Unable to insert a new item."});
@@ -187,9 +187,9 @@ class Product {
         `
         UPDATE products
         SET ?
-        WHERE prodID = ?
+        WHERE id = ?
         `;
-        db.query(strQry,[req.body, req.params.id],
+        database.query(strQry,[req.body, req.params.id],
             (err)=> {
                 if(err){
                     res.status(400).json({err: "Unable to update a item."});
@@ -206,8 +206,8 @@ class Product {
         DELETE FROM products
         WHERE prodID = ?;
         `;
-        db.query(strQry,[req.params.id], (err)=> {
-            if(err) res.status(400).json({err: "The data was not found."});
+        database.query(strQry,[req.params.id], (err)=> {
+            if(err) res.status(400).json({err: "The item was not found."});
             res.status(200).json({message: "An item was deleted."});
         })
     }

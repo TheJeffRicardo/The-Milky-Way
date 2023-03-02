@@ -1,6 +1,6 @@
 // Importing Authentication Middleware
 require('dotenv').config();
-var {sign, verify} = require('jsonwebtoken');
+const {sign, verify} = require('jsonwebtoken');
 // Creating a token
 function createToken(user) {
     return sign({
