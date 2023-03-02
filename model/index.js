@@ -174,7 +174,7 @@ class Product {
         db.query(strQry,[req.body],
             (err)=> {
                 if(err){
-                    res.status(400).json({err: "Unable to insert a new record."});
+                    res.status(400).json({err: "Unable to insert a new item."});
                 }else {
                     res.status(200).json({message: "Item has been captured"});
                 }

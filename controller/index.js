@@ -46,7 +46,7 @@ route.get('/products', (req, res)=> {
     product.fetchProducts(req, res);
 })
 // Fetch a single product
-route.get('/product/:prodID', 
+route.get('/product/:id', 
 (req, res)=> {
     product.fetchProduct(req, res);
 })
@@ -57,13 +57,13 @@ bodyParser.json(),
     product.addProduct(req, res);
 })
 // Update a product
-route.put('/product/:prodID', 
+route.put('/product/:id', 
 bodyParser.json(),
 (req, res)=> {
     product.updateProduct(req, res);
 })
 // Delete a product
-route.delete('/product/:prodID', 
+route.delete('/product/:id', 
 (req, res)=> {
     product.deleteProduct(req, res);
 })
