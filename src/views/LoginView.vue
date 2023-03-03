@@ -7,18 +7,18 @@
             <h2>Login</h2>
               <div class="input">
                 <i class="bi bi-envelope-at-fill"></i>
-                <input type="email" placeholder="Email" required>
+                <input type="email" v-model="email" placeholder="Email" required>
               </div>
               <div class="input">
                 <i class="bi bi-lock-fill"></i>
-                <input type="password" placeholder="Password" required>
+                <input type="password" v-model="password" placeholder="Password" required>
               </div>
               <a href="">
                 <div class="forgot">
                   <p>Forgot Password?</p>
                 </div>
               </a>
-              <button>Log In</button><br><br><br>
+              <button @click.prevent="login">Log In</button><br><br><br>
               <a href="/registration">
                 <div class="register">
                   <p>Wanna Sign Up?</p>
@@ -34,7 +34,17 @@
 </template>
   <script>
   export default {
-   
+   data(){
+    return {
+      email: '',
+      password: ''
+    }
+   },
+   methods: {
+    login(){
+      console.log(this.email,this.password);
+    }
+   }
   }
   </script>
   <style scoped>

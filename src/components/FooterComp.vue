@@ -15,7 +15,6 @@ export default {
     margin: 26px;
 }
 pre {
-    font-family: 'Fredoka One';
     text-align: center;
     font-size: 15px;
     overflow-y: hidden;

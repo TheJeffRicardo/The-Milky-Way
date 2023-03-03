@@ -1,7 +1,7 @@
 <template>
   <div class="back">
     <div class="container-fluid p-0 mb-5 pb-5">
-      <img class="w-100" src="https://i.postimg.cc/x1qT54rZ/carousel-1.jpg" alt="Image">
+      <img class="w-100" src="https://i.postimg.cc/HxP6d57L/wallpaperflare-com-wallpaper.jpg" alt="Image">
       <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
           <div class="text">
               <h4 class="text-white text-uppercase mb-md-3">Traditional & Delicious</h4>
@@ -26,5 +26,6 @@
   }
   .text{
     margin-top: -50%;
+    font-family: 'Fredoka One';
   }
   </style>

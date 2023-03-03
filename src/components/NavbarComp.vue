@@ -26,21 +26,21 @@
         </div>
     </div>
 
-    <div class="container-fluid nav-bar p-0">
+    <div class="container-fluid whitey p-0">
         <div class="container-lg p-0 px-lg-3">
             <nav class="navbar navbar-expand-lg bg-white navbar-light shadow p-lg-0">
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-around" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
                         <router-link to="/">Home</router-link> 
                         <router-link to="/admin">Admin</router-link> 
-                        <router-link to="/login">Login</router-link> 
-                    </div>
-                        <h1 class="m-0 display-4 milky">The Milky Way</h1>
-                    <div class="navbar-nav mr-auto py-0">
                         <router-link to="/product">Products</router-link> 
+                    </div>
+                    <h1 class="m-0 display-5 milky">The Milky <i class="bi bi-droplet"></i>Way</h1>
+                    <div class="navbar-nav mr-auto py-0">
+                        <router-link to="/login">Login</router-link> 
                         <router-link to="/registration">Registration</router-link> 
                         <router-link to="/userprofile">User Profile</router-link> 
                     </div>
@@ -55,6 +55,9 @@ export default {
 }
 </script>
 <style>
+    .milky{
+        font-family: 'Pacifico';
+    }
     .pink{
         background-color: #e83e8c;
     }
@@ -85,5 +88,9 @@ export default {
     }
     .milky{
         color: #e83e8c;
+    }
+    .whitey{
+        position: sticky;
+        top: 0;
     }
 </style>
