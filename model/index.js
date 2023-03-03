@@ -87,7 +87,7 @@ class User {
           var init = req.body;
           // Hashing user password
           init.userPass = await hash(init.userPass, 12);
-          // This information will be used for authentication
+          // For authentication
           let user = {
             emailAdd: init.emailAdd,
             userPass: init.userPass
