@@ -1,0 +1,14 @@
+[debug] [2023-03-03T15:16:49.923Z] ----------------------------------------------------------------------
+[debug] [2023-03-03T15:16:49.927Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2023-03-03T15:16:49.928Z] CLI Version:   11.24.0
+[debug] [2023-03-03T15:16:49.928Z] Platform:      win32
+[debug] [2023-03-03T15:16:49.928Z] Node Version:  v16.18.1
+[debug] [2023-03-03T15:16:49.930Z] Time:          Fri Mar 03 2023 17:16:49 GMT+0200 (South Africa Standard Time)
+[debug] [2023-03-03T15:16:49.930Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-03T15:16:50.108Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-03T15:16:50.109Z] > authorizing via signed-in user (konkemalindi@gmail.com)
+[debug] [2023-03-03T15:16:50.109Z] [iam] checking project vuefrontend-4b346 for permissions ["firebase.projects.get"]
+[debug] [2023-03-03T15:16:50.112Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/vuefrontend-4b346:testIamPermissions [none]
+[debug] [2023-03-03T15:16:50.113Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/vuefrontend-4b346:testIamPermissions x-goog-quota-user=projects/vuefrontend-4b346
+[debug] [2023-03-03T15:16:50.113Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vuefrontend-4b346:testIamPermissions {"permissions":["firebase.projects.get"]}
