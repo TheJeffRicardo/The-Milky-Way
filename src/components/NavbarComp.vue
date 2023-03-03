@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <div class="container-fluid whitey p-0">
+    <div class="container-fluid whitey p-0 mx-auto">
         <div class="container-lg p-0 px-lg-3">
             <nav class="navbar navbar-expand-lg bg-white navbar-light shadow p-lg-0">
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
