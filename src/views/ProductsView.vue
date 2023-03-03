@@ -26,7 +26,7 @@
   </div>
   <Spinner class="spinner" v-if="isLoading" />
   <div v-else>
-    <div class="row" v-if="filtering.length">
+   
           <div class="card g-5" v-for="items in filtering" :key="items" style="width: 18rem;">
             <img :src=items.imgURL alt="pictures of desserts">
             <div class="info" >
@@ -35,8 +35,8 @@
               <h4>Size: {{items.size}}</h4>
             </div>
           </div>
-       </div>
-       <div class="message" v-else>Can't find search: {{searching}}</div>
+       
+       
       </div>
    </div>
   </template>
