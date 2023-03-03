@@ -45,7 +45,7 @@ class User {
                             })
                         }else {
                             res.status(401).json({
-                                err: 'Invalid password or did not register. '
+                                err: 'Password incorrect or did not register.'
                             })
                         }
                     })
@@ -86,7 +86,7 @@ class User {
           // Payload
           var init = req.body;
           // Hashing user password
-          init.userPass = await hashSync(init.userPass, 12);
+          init.userPass = await hash(init.userPass, 12);
           // This information will be used for authentication
           let user = {
             emailAdd: init.emailAdd,
@@ -165,7 +165,7 @@ class Product {
             if(err){
                 res.status(400).json({err})
             } else {
-                res.status(200).json({message: "A product was added."})
+                res.status(200).json({message: "An item was added."})
             }
         })
     }
