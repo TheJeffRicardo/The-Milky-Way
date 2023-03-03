@@ -82,55 +82,46 @@ class User {
 
     }
     async createUser(req, res) {
-        // Payload
-        var init = req.body;
-        // Hashing user password
-        init.userPass = await 
-        hash(init.userPass, 12);
-        // This information will be used fo.
-        let user = {
+        try {
+          // Payload
+          var init = req.body;
+          // Hashing user password
+          init.userPass = await hashSync(init.userPass, 12);
+          // This information will be used for authentication
+          let user = {
             emailAdd: init.emailAdd,
             userPass: init.userPass
+          };
+          // SQL query
+          const tr = `INSERT INTO Users SET ?;`;
+          await db.query(tr, [init]);
+          // Create a token
+          const jwToken = createToken(user);
+          // This token will be saved in the cookie
+          // The duration is in milliseconds.
+          res.cookie("LegitUser", jwToken, {
+            maxAge: 3600000,
+            httpOnly: true
+          });
+          res.status(200).json({ msg: "A user record was saved." });
+        } catch (err) {
+          res.status(401).json({ err });
         }
-        // sql query
-        const strQry =
-        `INSERT INTO Users
-        SET ?;`;
-        db.query(strQry, [init], (err)=> {
-            if(err) {
-                res.status(401).json({err});
-            }else {
-                // Create a token
-                const jwToken = createToken(user);
-                // This token will be saved in the cookie. 
-                // The duration is in milliseconds.
-                res.cookie("LegitUser", jwToken, {
-                    maxAge: 3600000,
-                    httpOnly: true
-                });
-                res.status(200).json({msg: "A user record was saved."})
-            }
-        })    
-    }
-    updateUser(req, res) {
-        var bag = req.body;
-        if(bag.userPass !== null || 
-            bag.userPass !== undefined)
-            bag.userPass = hashSync(bag.userPass, 12);
-        const strQry = 
-        `
-        UPDATE Users
-        SET ?
-        WHERE userID = ?;
-        `;
-        //database
-        db.query(strQry,[bag, req.params.id], 
-            (err)=>{
-            if(err) throw err;
-            res.status(200).json( {message: 
-                "A row was affected"} );
-        })    
-    }
+      }
+      
+      async updateUser(req, res) {
+        try {
+          const { userID, bag } = req.body;
+          if (bag.userPass) {
+            bag.userPass = await hashSync(bag.userPass, 12);
+          }
+          await db.query('UPDATE Users SET ? WHERE userID = ?', [bag, userID]);
+          res.status(200).json({ message: 'A row was affected' });
+        } catch (err) {
+          res.status(500).json({ message: 'An error occurred while updating the user', error: err });
+        }
+      }
+      
     deleteUser(req, res) {
         const tr = 
         `

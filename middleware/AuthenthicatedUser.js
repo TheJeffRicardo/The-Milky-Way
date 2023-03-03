@@ -1,15 +1,15 @@
-// Importing Authentication Middleware
+// Middleware imports
 require('dotenv').config();
 const {sign, verify} = require('jsonwebtoken');
 // Creating a token
 function createToken(user) {
     return sign({
         email: user.email,
-        userpass: user.userpass
+        userPass: user.userPass
     },
     process.env.SECRET_KEY,
     {
-        expiresIn: '1 hour'
+        expiresIn: '30 minutes'
     });
 }
 //
@@ -18,7 +18,7 @@ function verifyAToken(req, res, next) {
         var token = req.cookies["LegitUser"] !== null ? req.cookies["LegitUser"] :
         "Please sign up" ;
         const isValid = null;
-        if(token !== "Please register") {
+        if(token !== "Please sign up") {
             isValid = verify(token, process.env.SECRET_KEY);
             if(isValid) {
                 req.authenticated = true;

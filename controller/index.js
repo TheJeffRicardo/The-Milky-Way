@@ -20,49 +20,49 @@ route.get('^/$|/Milky-Way', (req, res)=>{
 route.post('/login', bodyParser.json(), (req, res)=>{
     user.login(req, res);
 })
-// Retrieve all users
+// Getting all users
 route.get('/users', (req, res)=>{
     user.fetchUsers(req, res);
 });
-// Retrieve single users
+// Getting a single users
 route.get('/user/:id', (req, res)=>{
     user.fetchUser(req, res);
 });
-// Update
+// Updating user info
 route.put('/user/:id',bodyParser.json(), (req, res)=>{
     user.updateUser(req, res);
 });
-// Register
+// Registering a user
 route.post('/register', bodyParser.json(), (req, res)=> {
     user.createUser(req, res);
 });
-// Delete
+// Deleting a user
 route.delete('/user/:id', (req, res)=>{
     user.deleteUser(req, res);
 });
 
-// Fetch all products
+// Getting all products
 route.get('/products', (req, res)=> {
     product.fetchProducts(req, res);
 })
-// Fetch a single product
+// Getting a single product
 route.get('/product/:id', 
 (req, res)=> {
     product.fetchProduct(req, res);
 })
-// Add a new product
+// Adding a new product
 route.post('/product', 
 bodyParser.json(), 
 (req, res)=> {
     product.addProduct(req, res);
 })
-// Update a product
+// Updating a single product
 route.put('/product/:id', 
 bodyParser.json(),
 (req, res)=> {
     product.updateProduct(req, res);
 })
-// Delete a product
+// Deleting a single product
 route.delete('/product/:id', 
 (req, res)=> {
     product.deleteProduct(req, res);
