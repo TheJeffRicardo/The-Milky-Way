@@ -103,7 +103,7 @@ class User {
             maxAge: 3600000,
             httpOnly: true
           });
-          res.status(200).json({ msg: "A user record was saved." });
+          res.status(200).json({ message: "A user record was saved." });
         } catch (err) {
           res.status(401).json({ err });
         }
