@@ -11,9 +11,9 @@ const app = express();
 const {errorHandling} = require('./middleware/ErrorHandling');
 //
 const cookieParser = require('cookie-parser');
-//connecting frontend and backend
+//connecting frontend and backend 
 app.use((req, res, next)=> {
-        res.header('Access-Control-Allow-Origin', 'https://vuefrontend-4b346.web.app')
+        res.header('Access-Control-Allow-Origin', 'https://vuefrontend-4b346.web.app/')
         res.header("Access-Control-Allow-Credentials", "true")
         res.header("Access-Control-Allow-Methods", "*")
         res.header("Access-Control-Allow-Headers", "*")
