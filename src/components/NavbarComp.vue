@@ -72,7 +72,6 @@ export default {
     }
     .container-lg{
         z-index: 9;
-        position: relative;
         margin: -30px;
     }
     .navbar{
