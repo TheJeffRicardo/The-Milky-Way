@@ -36,14 +36,13 @@ export default createStore({
     }
   },
   actions: {
-    async login(context, payload) {
-      const res = await axios.post(`${api}login`, payload)
-      const {result, err} = await res.data
-      if(result) {
-        context.commit('setUser', result)
-      }else{
-        context.commit('setMessage', err)
-      }
+    async login() {
+      const res = await axios.post(`${api}login`, {
+        emailAdd: this.emailAdd,
+        userPass: this.userPass
+      })
+      console.log(res);
+     
     },
     async register(context, payload) {
       const res = await axios.post(`${api}register`, payload)
@@ -55,15 +54,13 @@ export default createStore({
       }
     },
     async fetchUsers(context) {
-      context.dispatch('setSpinner', true)
+
       const res = await axios.get(`${api}users`)
       let {results, err} = await res.data
       if(results){
         context.commit('setUsers', results)
-        context.dispatch('setSpinner', false)
       }else{
-        context.commit('setMessage', err)
-        context.dispatch('setSpinner', true)
+        context.commit('setMessage', err)     
       }
     },
     async fetchUser(context, payload) {
@@ -96,7 +93,6 @@ export default createStore({
       }
     },
     async fetchProducts(context,) {
-      context.dispatch('setSpinner')
       const res = await axios.get(`${api}products`)
       let {results, err} = await res.data
       if(results){
@@ -104,7 +100,6 @@ export default createStore({
       }else{
         context.commit('setMessage', err)
       }
-      context.dispatch('setSpinner')
     },
     async fetchProduct(context, payload) {
       const res = await axios.get(`${api}product/:id`, payload)

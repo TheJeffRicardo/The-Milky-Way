@@ -3,7 +3,7 @@
     <div class="login">
       <div class="form-box">
         <div class="form-value">
-          <form action="">
+          <form action="" @click.prevent="logSubmit">
             <h2>Login</h2>
               <div class="input">
                 <i class="bi bi-envelope-at-fill"></i>
@@ -33,7 +33,22 @@
     <img src="https://i.postimg.cc/wv4SWm4z/64-641338-cartoon-ice-cream-ice-cream-cute-cartoon-removebg-preview.png" class="bear" alt="cute bear on ice">
 </template>
   <script>
+  import {computed} from '@vue/runtime-core';
+  import { useStore  } from 'vuex';
   export default {
+    setup() {
+        const store = useStore()
+        store.dispatch("fetchUsers")
+        const login = ()=> {
+          store.dispatch('login')
+        }
+        const userFetch = computed( ()=>store.state.users)
+        return {
+          userFetch,
+          login
+  
+        }
+      },
    data(){
     return {
       email: '',
@@ -41,9 +56,7 @@
     }
    },
    methods: {
-    login(){
-      console.log(this.email,this.password);
-    }
+   
    }
   }
   </script>

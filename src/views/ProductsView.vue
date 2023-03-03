@@ -77,9 +77,6 @@
         }
         return this.products
       }},
-      methods: {
-        
-      },
       mounted () {
         this.$store.dispatch('fetchProducts')
       }

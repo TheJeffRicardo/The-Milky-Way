@@ -37,12 +37,14 @@
                         <router-link to="/">Home</router-link> 
                         <router-link to="/admin">Admin</router-link> 
                         <router-link to="/product">Products</router-link> 
+                        <router-link to="/single-product">Single</router-link> 
                     </div>
                     <h1 class="m-0 display-5 milky">The Milky <i class="bi bi-droplet"></i>Way</h1>
                     <div class="navbar-nav mr-auto py-0">
                         <router-link to="/login">Login</router-link> 
                         <router-link to="/registration">Registration</router-link> 
                         <router-link to="/userprofile">User Profile</router-link> 
+                        <router-link to="/contact">Contact Form</router-link> 
                     </div>
                 </div>
             </nav>

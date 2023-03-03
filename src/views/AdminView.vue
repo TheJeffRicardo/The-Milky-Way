@@ -1,4 +1,5 @@
 <template>
+  
     <div class="structure">
       <div class="btnh2"><h2>User's Table</h2><AddUser></AddUser></div>
       <div class="table">
@@ -56,6 +57,8 @@
             </tr>
           </thead>
           <tbody>
+            <Spinner class="spinner" v-if="isLoading" />
+            <div v-else></div>
             <tr v-for="items in productFetch" :key="items">
               <td>{{items.prodName}}</td>
               <td>R{{items.price}}</td>
@@ -76,10 +79,12 @@
   import { useStore  } from 'vuex';
   import AddUser from '@/components/AddUser.vue'
   import AddProduct from '@/components/AddProduct.vue'
+  import Spinner from '@/components/SpinnerComp.vue'
   export default {
     components: {
       AddUser,
       AddProduct,
+      Spinner
     },
       setup() {
         const store = useStore()
@@ -116,8 +121,7 @@
   </script>
   <style scoped>
   .spinner{
-    margin-left: 45%;
-    margin-top: 10%;
+    margin-left: 235%;
   }
   .structure{
     margin-top: -15%;

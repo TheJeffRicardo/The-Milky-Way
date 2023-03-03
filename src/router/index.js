@@ -31,7 +31,17 @@ const routes = [
     path: '/userprofile',
     name: 'userprofile-',
     component: () => import('../views/UserProfileView.vue')
-  }
+  },
+  {
+    path: '/contact',
+    name: 'con-tact',
+    component: () => import('../views/ContactFormView.vue')
+  },
+  {
+    path: '/single-product',
+    name: 'single-product',
+    component: () => import('../views/SingleProductView.vue')
+  },
 ]
 
 const router = createRouter({

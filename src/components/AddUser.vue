@@ -33,17 +33,17 @@
                                 <div class="d-flex ">
                                   <div class="form-check form-check-inline w-100 pb-3 m-auto">
                                     <input class="form-check-input" v-model="payload.gender"  type="radio" name="inlineRadioOptions" id="femaleGender"
-                                      value="option1" checked />
+                                      value="Female" checked />
                                     <label class="form-check-label" for="femaleGender">Female</label>
                                   </div>
                                   <div class="form-check form-check-inline w-100 pb-3 m-auto">
                                     <input class="form-check-input" v-model="payload.gender"  type="radio" name="inlineRadioOptions" id="maleGender"
-                                      value="option2" />
+                                      value="Male" />
                                     <label class="form-check-label" for="maleGender">Male</label>
                                   </div>
                                   <div class="form-check form-check-inline w-100 pb-3 m-auto">
                                     <input class="form-check-input" v-model="payload.gender"  type="radio" name="inlineRadioOptions" id="otherGender"
-                                      value="option3" />
+                                      value="Other" />
                                     <label class="form-check-label" for="otherGender">Other</label>
                                   </div>
                                 </div>
